@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("JE.Loggging")]
-[assembly: AssemblyDescription("Logging Component for Just Energy")]
+[assembly: AssemblyTitle("Log4NetExtension")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Techblocks")]
-[assembly: AssemblyProduct("JE.Loggging")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
-[assembly: AssemblyTrademark("JE.Loggging")]
+[assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 // Let log4net know that it can look for configuration in the default application config file
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
