@@ -7,8 +7,8 @@
     <ProjectGuid>{70CC57AC-B690-4060-BEF4-A59B50CDCAD8}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JE.Loggging</RootNamespace>
-    <AssemblyName>JE.Loggging</AssemblyName>
+    <RootNamespace>Log4NetExtension</RootNamespace>
+    <AssemblyName>Log4NetExtension</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

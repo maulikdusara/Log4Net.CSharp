@@ -1,0 +1,1 @@
+C:\Users\MaulikD\Downloads\Log4Net.CSharp\Log4Net.CSharp\JE.Logging.Test\obj\Debug\JE.Logging.Test.csprojResolveAssemblyReference.cache
