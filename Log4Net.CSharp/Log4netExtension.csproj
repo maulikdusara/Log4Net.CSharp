@@ -70,7 +70,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="JELoggingAttribute.cs" />
+    <Compile Include="LoggingAttribute.cs" />
     <Compile Include="Configurations.cs" />
     <Compile Include="Log4NetExtension.cs" />
     <Compile Include="Program.cs" />

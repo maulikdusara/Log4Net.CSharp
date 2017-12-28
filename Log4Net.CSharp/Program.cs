@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace Log4Net.CSharp
 {
 
-    [JELogging(CategoryName = "Jurisdiction", CategoryValue = "NJ")]
+    [Logging(CategoryName = "Jurisdiction", CategoryValue = "NJ")]
     public class Program
     {
         //Declare an instance for log4net
@@ -17,7 +17,7 @@ namespace Log4Net.CSharp
         }
 
         
-        [JELogging(CategoryName = "Business", CategoryValue = "New")]
+        [Logging(CategoryName = "Business", CategoryValue = "New")]
         private static void ImplementLoggingFuntion()
         {
             Log.JELog("JE Logs with Custom Attributes");
