@@ -1,29 +1,30 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Log4Net.CSharp
+namespace Log4NetExtension
 {
-    [System.AttributeUsage(
-        System.AttributeTargets.Class |
-            System.AttributeTargets.Method,
-        AllowMultiple = true)
-    ]
-    public class LoggingAttribute : Attribute
+    public class LogAttribute : Attribute
     {
         public string CategoryName { get; set; }
-        public string CategoryValue { get; set; }
+        public string SubCategoryName { get; set; }
+        public string LastCategoryName { get; set; }
+        public string[] Data { get; set; }
 
-        public LoggingAttribute()
+        public LogAttribute()
         {
+
         }
 
-        public override string ToString()
+        public LogAttribute(string categoryName, string subCategoryName, string lastCategoryName, params string[] additionalProperties)
         {
-            return string.Format("{0}={1}",CategoryName,CategoryValue);
+            this.CategoryName = categoryName;
+            this.SubCategoryName = subCategoryName;
+            this.LastCategoryName = lastCategoryName;
+            this.Data = additionalProperties;
         }
+
     }
 }

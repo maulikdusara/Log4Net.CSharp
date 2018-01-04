@@ -3,24 +3,24 @@ using log4net;
 using System.Threading;
 using System.Collections.Generic;
 
-namespace Log4Net.CSharp
+namespace Log4NetExtension
 {
 
-    [Logging(CategoryName = "Jurisdiction", CategoryValue = "NJ")]
+    [LogAttribute("Class Category", "Class SubCatName", "Class LastCatName", "Business:New", "Jurisdiction:NY")]
     public class Program
     {
         //Declare an instance for log4net
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             ImplementLoggingFuntion();
         }
 
-        
-        [Logging(CategoryName = "Business", CategoryValue = "New")]
+
+        //[LogAttribute("CatName", "SubCatName", "LastCatName", "Process:GeneratePDF")]
         private static void ImplementLoggingFuntion()
         {
-            Log.JELog("JE Logs with Custom Attributes");
+            Log.LogAttr("Generate PDF Function");
         }
     }
 }
