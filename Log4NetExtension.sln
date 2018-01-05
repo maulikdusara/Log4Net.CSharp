@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Log4netExtension", "Log4Net.CSharp\Log4netExtension.csproj", "{70CC57AC-B690-4060-BEF4-A59B50CDCAD8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceAPI", "ServiceAPI\ServiceAPI.csproj", "{B5F7D951-27D8-4E79-BEFB-C89B0C4EDEF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceAPI.Tests", "ServiceAPI.Tests\ServiceAPI.Tests.csproj", "{AFB338E1-8D6B-464A-8EE6-D765183A736B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{70CC57AC-B690-4060-BEF4-A59B50CDCAD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70CC57AC-B690-4060-BEF4-A59B50CDCAD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70CC57AC-B690-4060-BEF4-A59B50CDCAD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5F7D951-27D8-4E79-BEFB-C89B0C4EDEF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5F7D951-27D8-4E79-BEFB-C89B0C4EDEF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5F7D951-27D8-4E79-BEFB-C89B0C4EDEF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5F7D951-27D8-4E79-BEFB-C89B0C4EDEF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFB338E1-8D6B-464A-8EE6-D765183A736B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFB338E1-8D6B-464A-8EE6-D765183A736B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFB338E1-8D6B-464A-8EE6-D765183A736B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFB338E1-8D6B-464A-8EE6-D765183A736B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

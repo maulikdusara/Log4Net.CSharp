@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace Log4NetExtension
 {
 
-    [LogAttribute("Class Category", "Class SubCatName", "Class LastCatName", "Business:New", "Jurisdiction:NY")]
+    [LogCategoryAttribute("Business:New", "Jurisdiction:NY")]
     public class Program
     {
         //Declare an instance for log4net

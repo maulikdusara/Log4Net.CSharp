@@ -1,10 +1,8 @@
-C:\Users\MaulikD\Downloads\Log4Net.CSharp\Log4Net.CSharp\Log4Net.CSharp\bin\Debug\Log4NetExtension.exe.config
 C:\Users\MaulikD\Downloads\Log4Net.CSharp\Log4Net.CSharp\Log4Net.CSharp\bin\Debug\Log4NetExtension.exe
 C:\Users\MaulikD\Downloads\Log4Net.CSharp\Log4Net.CSharp\Log4Net.CSharp\bin\Debug\Log4NetExtension.pdb
 C:\Users\MaulikD\Downloads\Log4Net.CSharp\Log4Net.CSharp\Log4Net.CSharp\bin\Debug\log4net.dll
 C:\Users\MaulikD\Downloads\Log4Net.CSharp\Log4Net.CSharp\Log4Net.CSharp\bin\Debug\Newtonsoft.Json.dll
 C:\Users\MaulikD\Downloads\Log4Net.CSharp\Log4Net.CSharp\Log4Net.CSharp\bin\Debug\log4net.xml
 C:\Users\MaulikD\Downloads\Log4Net.CSharp\Log4Net.CSharp\Log4Net.CSharp\bin\Debug\Newtonsoft.Json.xml
-C:\Users\MaulikD\Downloads\Log4Net.CSharp\Log4Net.CSharp\Log4Net.CSharp\obj\Debug\Log4netExtension.csprojResolveAssemblyReference.cache
 C:\Users\MaulikD\Downloads\Log4Net.CSharp\Log4Net.CSharp\Log4Net.CSharp\obj\Debug\Log4NetExtension.exe
 C:\Users\MaulikD\Downloads\Log4Net.CSharp\Log4Net.CSharp\Log4Net.CSharp\obj\Debug\Log4NetExtension.pdb

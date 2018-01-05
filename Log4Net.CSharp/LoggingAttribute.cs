@@ -6,24 +6,18 @@ using System.Threading.Tasks;
 
 namespace Log4NetExtension
 {
-    public class LogAttribute : Attribute
+    public class LogCategoryAttribute : Attribute
     {
-        public string CategoryName { get; set; }
-        public string SubCategoryName { get; set; }
-        public string LastCategoryName { get; set; }
         public string[] Data { get; set; }
 
-        public LogAttribute()
+        public LogCategoryAttribute()
         {
 
         }
 
-        public LogAttribute(string categoryName, string subCategoryName, string lastCategoryName, params string[] additionalProperties)
+        public LogCategoryAttribute(params string[] categories)
         {
-            this.CategoryName = categoryName;
-            this.SubCategoryName = subCategoryName;
-            this.LastCategoryName = lastCategoryName;
-            this.Data = additionalProperties;
+            this.Data = categories;
         }
 
     }

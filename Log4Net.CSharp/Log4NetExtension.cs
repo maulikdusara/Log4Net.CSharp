@@ -14,27 +14,33 @@ namespace Log4NetExtension
 {
     public static class Log4NetExtensions
     {
-        static readonly log4net.Core.Level logLevel = new log4net.Core.Level(Configurations.customLogLevel,Configurations.customLogLevelName);
-        public static void LogAttr(this ILog log, string message)
+        static readonly log4net.Core.Level logLevel = new log4net.Core.Level(Configurations.customLogLevel, Configurations.customLogLevelName);
+
+        public static void LogAttr(this ILog log, string message, bool includeStack = false)
         {
-            var stackTrace = new StackTrace(true);
+            var stackTrace = new StackTrace(includeStack);
             var frame = stackTrace.GetFrame(1);
             dynamic container = new ExpandoObject();
             var mbase = frame.GetMethod();
             var functionAttributes = CustomAttributeData.GetCustomAttributes(mbase);
             var classAttributes = CustomAttributeData.GetCustomAttributes(mbase.ReflectedType);
-            var props = typeof(LogAttribute).GetProperties();
+            var props = typeof(LogCategoryAttribute).GetProperties();
 
             ParseCustomAttributes(functionAttributes, props, container);
             ParseCustomAttributes(classAttributes, props, container, "parent");
 
-            container.CallingMethod = mbase.Name;
             container.Message = message;
-            container.StackTrace = prepareStackTrace(stackTrace);
 
+            if (includeStack)
+            {
+                container.CallingMethod = mbase.Name;
+                container.CallLocation = mbase.DeclaringType.FullName;
+                container.StackTrace = prepareStackTrace(stackTrace);
+            }
             var logMessage = JsonConvert.SerializeObject(container);
 
             log.Logger.Log(mbase.DeclaringType, logLevel, logMessage, null);
+            log.Info(logMessage);
 
         }
 
@@ -55,7 +61,9 @@ namespace Log4NetExtension
             return trace.ToString();
         }
 
-        private static void AddProperty(ExpandoObject container, string propertyName, object propertyValue)
+        private static void AddProperty(ExpandoObject container,
+                                        string propertyName,
+                                        object propertyValue)
         {
             // ExpandoObject supports IDictionary so we can extend it like this
             var expandoDict = container as IDictionary<string, object>;
@@ -66,7 +74,9 @@ namespace Log4NetExtension
         }
 
         private static void ParseCustomAttributes(
-        IList<CustomAttributeData> attributes, PropertyInfo[] props, ExpandoObject container, string preName = null)
+                            IList<CustomAttributeData> attributes,
+                            PropertyInfo[] props,
+                            ExpandoObject container, string preName = null)
         {
             for (var i = 0; i < attributes.Count; i++)
             {
@@ -95,7 +105,10 @@ namespace Log4NetExtension
             }
         }
 
-        private static void ParseAttributeData(CustomAttributeTypedArgument cata, string name, ExpandoObject container, string parentName)
+        private static void ParseAttributeData(CustomAttributeTypedArgument cata,
+                                    string name,
+                                    ExpandoObject container,
+                                    string parentName)
         {
             if (cata.Value.GetType() == typeof(ReadOnlyCollection<CustomAttributeTypedArgument>))
             {
