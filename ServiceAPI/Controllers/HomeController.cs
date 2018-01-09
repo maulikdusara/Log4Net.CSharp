@@ -28,7 +28,7 @@ namespace ServiceAPI.Controllers
         [LogCategory("Method:HelloWorld","Client:MobileDevice")]
         public JsonResult helloWorld()
         {
-            Log.LogAttr("Log Hello world with Custom URL re-writing with Method level Attributes");
+            Log.LogAttr("Log Hello world with Custom URL re-writing with Method level Attributes",true);
             return Json("Usage of Log4net extension", JsonRequestBehavior.AllowGet);
         }
     }
