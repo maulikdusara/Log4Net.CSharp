@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Log4NetExtension
 {
+    [AttributeUsage(AttributeTargets.Class | 
+                    AttributeTargets.Method |
+                    AttributeTargets.Interface)]
     public class LogCategoryAttribute : Attribute
     {
         public string[] Data { get; set; }

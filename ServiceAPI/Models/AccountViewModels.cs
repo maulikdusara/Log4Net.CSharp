@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace ServiceAPI.Models
@@ -12,8 +13,11 @@ namespace ServiceAPI.Models
         public string Url { get; set; }
 
         public string State { get; set; }
+
+        
     }
 
+    
     public class ManageInfoViewModel
     {
         public string LocalLoginProvider { get; set; }

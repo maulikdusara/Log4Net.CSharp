@@ -2,6 +2,7 @@
 using log4net;
 using System.Threading;
 using System.Collections.Generic;
+using System.Dynamic;
 
 namespace Log4NetExtension
 {
@@ -20,7 +21,7 @@ namespace Log4NetExtension
         //[LogAttribute("CatName", "SubCatName", "LastCatName", "Process:GeneratePDF")]
         private static void ImplementLoggingFuntion()
         {
-            Log.LogAttr("Generate PDF Function");
+            Log.LogA("Generate PDF Function");
         }
     }
 }

@@ -14,7 +14,7 @@ namespace ServiceAPI.Tests.Controllers
     public class ValuesControllerTest
     {
         [TestMethod]
-        public void Get()
+        public void ValueController_ParentWithCustomRoute_Log()
         {
             // Arrange
             ValuesController controller = new ValuesController();
@@ -30,7 +30,7 @@ namespace ServiceAPI.Tests.Controllers
         }
 
         [TestMethod]
-        public void GetById()
+        public void ValueController_ParentInherit_withDefaultRoute_Log()
         {
             // Arrange
             ValuesController controller = new ValuesController();
@@ -42,6 +42,18 @@ namespace ServiceAPI.Tests.Controllers
             Assert.AreEqual("value", result);
         }
 
-        
+        [TestMethod]
+        public void ValueController_ParentInherit_withDefaultRoute_Debug()
+        {
+            // Arrange
+            ValuesController controller = new ValuesController();
+
+            // Act
+            string result = controller.logDebugObject();
+
+            // Assert
+            Assert.AreEqual("value", result);
+        }
+
     }
 }

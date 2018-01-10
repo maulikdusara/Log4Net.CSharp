@@ -14,11 +14,76 @@ namespace Log4NetExtension
 {
     public static class Log4NetExtensions
     {
+        #region Internal Members
+
+        private enum enLogLevel
+        {
+            Log,
+            Debug,
+            Error,
+            Fatal,
+            Info,
+            Warn
+        }
+
         static readonly log4net.Core.Level logLevel = new log4net.Core.Level(Configurations.customLogLevel, Configurations.customLogLevelName);
 
-        public static void LogAttr(this ILog log, string message, bool includeStack = false)
+        #endregion Internal Members
+
+        #region Public Methods
+
+        #region Log
+
+        public static void LogA(this ILog log, object message) { _log(log, message, enLogLevel.Log, false, null); }
+        public static void LogA(this ILog log, object message, bool includeStack) { _log(log, message, enLogLevel.Log, includeStack, null); }
+        public static void LogA(this ILog log, object message, Exception exception) { _log(log, message, enLogLevel.Log, false, exception); }
+        public static void LogA(this ILog log, object message, bool includeStack, Exception exception) { _log(log, message, enLogLevel.Log, includeStack, exception); }
+
+        #endregion Log
+
+        #region Debug
+
+        public static void DebugA(this ILog log, object message) { _log(log, message, enLogLevel.Debug, false, null); }
+        public static void DebugA(this ILog log, object message, bool includeStack) { _log(log, message, enLogLevel.Debug, includeStack, null); }
+        public static void DebugA(this ILog log, object message, Exception exception) { _log(log, message, enLogLevel.Debug, false, exception); }
+        public static void DebugA(this ILog log, object message, bool includeStack, Exception exception) { _log(log, message, enLogLevel.Debug, includeStack, exception); }
+
+        #endregion Debug
+
+        #region Fatal
+
+        public static void FatalA(this ILog log, object message) { _log(log, message, enLogLevel.Fatal, false, null); }
+        public static void FatalA(this ILog log, object message, bool includeStack) { _log(log, message, enLogLevel.Fatal, includeStack, null); }
+        public static void FatalA(this ILog log, object message, Exception exception) { _log(log, message, enLogLevel.Fatal, false, exception); }
+        public static void FatalA(this ILog log, object message, bool includeStack, Exception exception) { _log(log, message, enLogLevel.Fatal, includeStack, exception); }
+
+        #endregion Fatal
+
+        #region Info
+
+        public static void InfoA(this ILog log, object message) { _log(log, message, enLogLevel.Info, false, null); }
+        public static void InfoA(this ILog log, object message, bool includeStack) { _log(log, message, enLogLevel.Info, includeStack, null); }
+        public static void InfoA(this ILog log, object message, Exception exception) { _log(log, message, enLogLevel.Info, false, exception); }
+        public static void InfoA(this ILog log, object message, bool includeStack, Exception exception) { _log(log, message, enLogLevel.Info, includeStack, exception); }
+
+        #endregion Info
+
+        #region Warn
+
+        public static void WarnA(this ILog log, object message) { _log(log, message, enLogLevel.Warn, false, null); }
+        public static void WarnA(this ILog log, object message, bool includeStack) { _log(log, message, enLogLevel.Warn, includeStack, null); }
+        public static void WarnA(this ILog log, object message, Exception exception) { _log(log, message, enLogLevel.Warn, false, exception); }
+        public static void WarnA(this ILog log, object message, bool includeStack, Exception exception) { _log(log, message, enLogLevel.Warn, includeStack, exception); }
+
+        #endregion Info
+
+        #endregion Public Methods
+
+        #region Logging Logic
+
+        private static void _log(ILog log, object _message, enLogLevel _logLevel = enLogLevel.Log, bool _includeStack = false, Exception _exception = null)
         {
-            var stackTrace = new StackTrace(includeStack);
+            var stackTrace = new StackTrace(_includeStack);
             var frame = stackTrace.GetFrame(1);
             dynamic container = new ExpandoObject();
             var mbase = frame.GetMethod();
@@ -27,11 +92,11 @@ namespace Log4NetExtension
             var props = typeof(LogCategoryAttribute).GetProperties();
 
             ParseCustomAttributes(functionAttributes, props, container);
-            ParseCustomAttributes(classAttributes, props, container, "parent");
+            ParseCustomAttributes(classAttributes, props, container, "");
 
-            container.Message = message;
+            container.BodyMessage = _message;
 
-            if (includeStack)
+            if (_includeStack)
             {
                 container.CallingMethod = mbase.Name;
                 container.CallLocation = mbase.DeclaringType.FullName;
@@ -39,10 +104,37 @@ namespace Log4NetExtension
             }
             var logMessage = JsonConvert.SerializeObject(container);
 
-            log.Logger.Log(mbase.DeclaringType, logLevel, logMessage, null);
-            log.Info(logMessage);
+            switch (_logLevel)
+            {
+                case enLogLevel.Log:
+                    log.Logger.Log(mbase.DeclaringType, logLevel, logMessage, null);
+                    break;
+                case enLogLevel.Debug:
+                    log.Debug(logMessage, _exception);
+                    break;
+                case enLogLevel.Error:
+                    log.Error(logMessage, _exception);
+                    break;
+                case enLogLevel.Fatal:
+                    log.Fatal(logMessage, _exception);
+                    break;
+                case enLogLevel.Info:
+                    log.Info(logMessage, _exception);
+                    break;
+                case enLogLevel.Warn:
+                    log.Warn(logMessage, _exception);
+                    break;
+                default:
+                    break;
+            }
 
+            
         }
+
+        #endregion Logging Logic
+
+        #region Private Methods
+
 
         private static string prepareStackTrace(StackTrace stackTrace)
         {
@@ -140,5 +232,7 @@ namespace Log4NetExtension
             }
             return name;
         }
+
+        #endregion Private Methods
     }
 }

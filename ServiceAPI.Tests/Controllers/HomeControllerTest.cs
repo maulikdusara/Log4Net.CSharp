@@ -9,7 +9,7 @@ namespace ServiceAPI.Tests.Controllers
     public class HomeControllerTest
     {
         [TestMethod]
-        public void Index()
+        public void HomeController_ClassLevel_LogSuccess()
         {
             HomeController controller = new HomeController();
 
@@ -20,7 +20,7 @@ namespace ServiceAPI.Tests.Controllers
         }
 
         [TestMethod]
-        public void HelloWorld()
+        public void HomeController_ParentInherit_WithMethod_LogSuccess()
         {
             HomeController controller = new HomeController();
 

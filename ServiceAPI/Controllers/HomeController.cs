@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Log4NetExtension;
+using ServiceAPI.Models;
 
 namespace ServiceAPI.Controllers
 {
@@ -18,7 +19,7 @@ namespace ServiceAPI.Controllers
         {
             ViewBag.Title = "Home Page";
 
-            Log.LogAttr("Custom Log",true);
+            Log.LogA("Custom Log",true);
 
             return View();
         }
@@ -28,7 +29,14 @@ namespace ServiceAPI.Controllers
         [LogCategory("Method:HelloWorld","Client:MobileDevice")]
         public JsonResult helloWorld()
         {
-            Log.LogAttr("Log Hello world with Custom URL re-writing with Method level Attributes",true);
+            ExternalLoginViewModel logObject = new ExternalLoginViewModel()
+            {
+                Name = "Hello World",
+                State = "NY",
+                Url ="hello/World/{Identity ID}"
+            };
+
+            Log.LogA(logObject,true);
             return Json("Usage of Log4net extension", JsonRequestBehavior.AllowGet);
         }
     }
